@@ -31,7 +31,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ApplicationIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,14 +51,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Application.cs" />
+    <Compile Include="Models\Behaviors\BehaviorProvider.cs" />
+    <Compile Include="Models\Converter.cs" />
+    <Compile Include="Models\Behaviors\ExpandRepositoryBehavior.cs" />
+    <Compile Include="Models\Managers\CreatedEntries\CreatedEntriesManager.cs" />
+    <Compile Include="Models\Managers\CreatedEntries\ICreatedEntriesManager.cs" />
+    <Compile Include="Models\Managers\CreatedEntries\ICreatedEntriesProvider.cs" />
+    <Compile Include="Models\Managers\Roots\ISystemRootManager.cs" />
+    <Compile Include="Models\Managers\Roots\ISystemRootProvider.cs" />
+    <Compile Include="Models\Managers\Roots\SystemRootManager.cs" />
+    <Compile Include="Models\Memento.cs" />
+    <Compile Include="Models\Objects\CareTaker.cs" />
+    <Compile Include="Models\Objects\FileSystem.cs" />
+    <Compile Include="Presenters\ExplorerPresenter.cs" />
+    <Compile Include="Presenters\HistoryControlPresenter.cs" />
+    <Compile Include="Presenters\IPresenter.cs" />
+    <Compile Include="Presenters\ListControlPresenter.cs" />
+    <Compile Include="Presenters\TreePresenter.cs" />
+    <Compile Include="Views\Explorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\Explorer.Designer.cs">
+      <DependentUpon>Explorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Behaviors\InitializeRootBehavior.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\File.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\FileSystemEntry.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\FileSystemFactories\FileSystemFactory.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\FileSystemFactories\IFileSystemFactory.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\Repositories\Folder.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\Repositories\LogicalDrive.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\Repositories\PC.cs" />
+    <Compile Include="Models\Objects\FileSystemEntries\Repositories\Repository.cs" />
+    <Compile Include="Models\Behaviors\UpdateRepositoryBehavior.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IHistoryView.cs" />
+    <Compile Include="Views\IListView.cs" />
+    <Compile Include="Views\ITreeView.cs" />
+    <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\PathEventArgs.cs" />
+    <EmbeddedResource Include="Views\Explorer.resx">
+      <DependentUpon>Explorer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,7 +104,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +119,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\View.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
