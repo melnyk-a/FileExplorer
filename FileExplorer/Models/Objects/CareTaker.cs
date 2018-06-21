@@ -30,7 +30,10 @@ namespace FileExplorer.Models
                 {
                     if (current < history.Count - 1)
                     {
-                        history.RemoveRange(current + 1, history.Count - current - 1);
+                        for(int i= history.Count - current - 1;i!=current+1;--i)
+                        {
+                            history.RemoveAt(i);
+                        }
                     }
                     history.Add(memento);
                     ++current;
