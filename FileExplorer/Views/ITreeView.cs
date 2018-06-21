@@ -6,9 +6,10 @@ namespace FileExplorer.Views
     {
         bool Loaded(string path, string key);
         string Selected { get; set; }
-          
-        event EventHandler<PathEventArgs> Expand;
+
         event EventHandler<PathEventArgs> Collapse;
+        event EventHandler<PathEventArgs> Expand;
+
         event EventHandler LoadTree;
 
         void AddFolder(string parentKey, string key, string text);

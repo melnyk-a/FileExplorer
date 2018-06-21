@@ -18,8 +18,8 @@ namespace FileExplorer.Views
         }
 
         public event EventHandler Back;
-        public event EventHandler<PathEventArgs> Expand;
         public event EventHandler<PathEventArgs> Collapse;
+        public event EventHandler<PathEventArgs> Expand;
         public event EventHandler Forward;
         public event EventHandler LoadTree
         {
