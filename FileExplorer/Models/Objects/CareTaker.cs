@@ -5,7 +5,7 @@ namespace FileExplorer.Models
     internal sealed class CareTaker
     {
         private int current = -1;
-        private readonly List<Memento> history = new List<Memento>();
+        private readonly IList<Memento> history = new List<Memento>();
 
         public bool HasNext
         {
